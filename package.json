@@ -1,0 +1,19 @@
+{
+  "name": "playwright-automation-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test ./tests/UIBasicstest.spec.js",
+    "client": "npx playwright test ./tests/ClientApp.spec.js"
+    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.1"
+  }
+}

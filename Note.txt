@@ -1,0 +1,53 @@
+
+NOTED
+- Pesudo elenment
+ + a[href*='learning']:visible   -> visuable locator
+ + :hastext 
+
+**section 4 '
+How to get text from the browser
+
+**Section 5 
+Handling UI Components(Dropdowns ,Radio Buttons, Childwindows) with Playwright
+
+**Section 6 How to debug in playwright 
+- run the script : npx playwright test --debug
+- Code GEN PLAYWRIGHT:   npx playwright codegen link(HTTPS://)
+- Screenshot for step 
+
+**Section 7 
+- write scipt to add cart product 
+    +  //wait for cart page to load
+    await page.locator("div li").first().waitFor();
+
+    const bool = await page.locator("h3:has-text('ZARA COAT 3')").isVisible();
+    expect(bool).toBeTruthy();
+
+
+-     //remember to wait for page load
+    await page.locator("tbody tr").first().waitFor();
+
+- textContent() dont need to wait  
+
+**Section 8 
+
+- enable UI test ide playwright : npx playwright test --ui
+- understand getBylabel and 
+- getBylabel , getByPlaceHolder , getByRole("Type",{name: ${nameOfType}})
+- HAndle the calendar automation
+- 42. Handle the calendar 
+    + How to add variable to await page.locator("//abbr[text()='"+date+"']").click();
+
+**SECTION 9 
+Section 9: Handling Web dialogs, Frames & Event listeners with Playwright
+
+
+**SECTION 10 
+Handle API 
+- 51.add token access to localstorage 
+- 52. improve e2e test with apiUtils 
+
+
+**SECTION 11
+
+
