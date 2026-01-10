@@ -111,8 +111,65 @@ test('add cart E2E', async ({ page }) => {
     //VERIFY ORDER DETAILS
     console.log( await page.locator(".email-title").textContent());
     const orderDetails = await page.locator(".col-text").textContent()
-    expect(orderId.includes(orderDetails)).toBeTruthy() ;
+    expect(orderId.includes(orderDetails)).toBeTruthy();
 
 })
+
+
+
+test.only(`rerun checkout page - practice after along time `, async ({ page }) => {
+    await page.goto('https://rahulshettyacademy.com/client');
+    const email = page.locator("#userEmail");
+    const password = page.locator("#userPassword");
+    const loginBtn = page.locator("#login");
+    await email.fill("anshikat@gmail.com");
+    await password.fill("Iamking@000");
+    await loginBtn.click();
+
+    // wait for page load
+    await page.locator(".card-body ").first().waitFor();
+
+    const firstCard = await page.locator(".card-body ").first()
+    // get text 
+    console.log(await firstCard.locator("b").first().textContent());
+
+    //START THE SECTION 6 
+    const products = page.locator(".card-body");
+    const productName = "ZARA COAT 3";
+    const count = await products.count()
+
+    for (let i = 0; i < count; i++) {
+        if (await products.nth(i).locator("b").textContent() === productName) {
+            await products.nth(i).locator("text= Add To Cart").click();
+            break;
+        }
+    }
+
+    //click on cart 
+    await page.locator("[routerlink*='cart']").click();
+
+    //wait for cart page to load
+    await page.locator("div li").first().waitFor();
+    await page.locator("h3:has-text('ZARA COAT 3')").isVisible();
+    await page.locator("text=Checkout").click();
+
+    //CHECKOUT PAGE
+    await page.locator("[placeholder*='Country']").pressSequentially("Ind", { delay: 100 });
+    const dropdown = page.locator(".ta-results");
+    await dropdown.waitFor();
+    const optionsCount = await dropdown.locator("button").count();
+    for (let i = 0; i < optionsCount; ++i) {
+        const text = await dropdown.locator("button").nth(i).textContent();
+        if (text === " India") {
+            await dropdown.locator("button").nth(i).click();
+            break;
+        }   
+
+    }
+
+    await page.locator("a:has-text('Place Order')").click();
+
+
+});
 
 //section 7 
