@@ -14,7 +14,7 @@ const { defineConfig, devices } = require('@playwright/test');
  */
 const config = ({
   testDir: './tests',
-  timeout: 80 * 1000,
+  timeout: 8* 1000,
   expect:{
     timeout:  80 * 1000
   },

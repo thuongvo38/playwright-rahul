@@ -1,6 +1,8 @@
 const { test, expect } = require('@playwright/test');
 let webContext; 
 
+
+//section 11 - 59 - persistant login - storage state - .json file
 test.beforeAll(async ({browser}) => 
     {
     const context = await browser.newContext();
